@@ -138,6 +138,7 @@ async function handleSubmit(e) {
         formData.append('inGameName', document.getElementById('inGameName').value);
         formData.append('clan', document.getElementById('clan').value);
         formData.append('warframe', document.getElementById('warframe').value);
+        formData.append('notes', document.getElementById('notes').value || '');
         
         // Add images
         capturaFiles.forEach((file, index) => {
@@ -205,6 +206,23 @@ function showAlert(message, type) {
 // INITIALIZATION
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
+    // Populate event info
+    const prizesList = document.getElementById('prizesList');
+    const rulesList = document.getElementById('rulesList');
+    
+    EVENT_INFO.prizes.forEach(prize => {
+        const li = document.createElement('li');
+        li.innerHTML = prize;
+        prizesList.appendChild(li);
+    });
+    
+    EVENT_INFO.rules.forEach(rule => {
+        const li = document.createElement('li');
+        li.innerHTML = rule;
+        rulesList.appendChild(li);
+    });
+    
+    // Setup form
     createParticles();
     setupFileUpload('capturaImages', 'capturaPreview', 'capturaDrop', true);
     setupFileUpload('arsenalImage', 'arsenalPreview', 'arsenalDrop', false);

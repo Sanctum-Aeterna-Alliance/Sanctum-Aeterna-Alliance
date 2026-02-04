@@ -168,6 +168,72 @@
             animation: fadeIn 1s ease;
         }
 
+        .info-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            animation: fadeIn 1s ease;
+        }
+
+        .info-card h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent), #f4d799);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .info-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid rgba(89, 109, 105, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .info-section {
+            margin-bottom: 2rem;
+        }
+
+        .info-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-card ul,
+        .info-card ol {
+            margin-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .info-card li {
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .info-card strong {
+            color: var(--accent);
+        }
+
+        .info-card a {
+            color: var(--primary-light);
+            text-decoration: none;
+            border-bottom: 1px solid var(--primary-light);
+            transition: all 0.3s ease;
+        }
+
+        .info-card a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -198,7 +264,8 @@
         }
 
         input[type="text"],
-        select {
+        select,
+        textarea {
             width: 100%;
             padding: 0.875rem 1rem;
             background: var(--bg-dark);
@@ -210,8 +277,14 @@
             font-family: 'Montserrat', sans-serif;
         }
 
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
         input[type="text"]:focus,
-        select:focus {
+        select:focus,
+        textarea:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(89, 109, 105, 0.1);
@@ -453,6 +526,25 @@
     </style>
 </head>
 <body>
+    <!-- ========================================== -->
+    <!-- EDIT EVENT INFO HERE -->
+    <!-- ========================================== -->
+    <script>
+        const EVENT_INFO = {
+            prizes: [
+                "1st Place ⚔️ Deluxe Skin Bundle of your choice!",
+                "2nd Place ⭐ Skin of your choice, excluding tennogen.",
+                "3rd Place 🎨 Color Palette of your choice."
+            ],
+            rules: [
+                "The color of the year, <strong>Hidden Gem</strong>, must be the Warframe's primary color.",
+                "You can use <strong>SSGN5</strong> to find what color you can use. Use <a href='https://wfcp.github.io/' target='_blank'>Warframe Color Picker</a> to see which palettes work for you!",
+                "Your entry <strong>must</strong> include a Captura shot, and a Fullscreen screenshot of your arsenal so we can see what colors you use on your frame of choice."
+            ]
+        };
+    </script>
+    <!-- ========================================== -->
+    
     <div class="particles" id="particles"></div>
     
     <div class="container">
@@ -462,6 +554,20 @@
             </div>
             <h1>Sanctum Aeterna Alliance Event</h1>
             <p class="subtitle">Submit Your Contest Entry</p>
+        </div>
+
+        <div class="info-card">
+            <h2>🌟 Sanctum Aeterna Alliance Event 🌟</h2>
+            
+            <div class="info-section">
+                <h3>Prizes</h3>
+                <ul id="prizesList"></ul>
+            </div>
+
+            <div class="info-section">
+                <h3>Rules</h3>
+                <ol id="rulesList"></ol>
+            </div>
         </div>
 
         <div class="form-card">
@@ -520,6 +626,11 @@
                         </div>
                         <div id="arsenalPreview" class="file-preview"></div>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Additional Notes (Optional)</label>
+                    <textarea id="notes" name="notes" rows="4" placeholder="Tell us about your fashion frame, build choices, or any special details you'd like to share..."></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn" id="submitBtn">

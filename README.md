@@ -1,108 +1,5 @@
 # Sanctum Aeterna Alliance Event Form
 
-A secure contest entry form with Discord webhook integration, hosted on Netlify.
-
-## 🔐 Why Netlify?
-
-Your original GitHub Pages setup **exposed your Discord webhook URLs** in the source code, allowing anyone to spam your server. This Netlify version solves that by:
-
-- ✅ Hiding webhooks in serverless functions (backend code users can't see)
-- ✅ Processing image uploads securely
-- ✅ 100% FREE forever
-- ✅ Same easy deployment as GitHub Pages
-
----
-
-## 🚀 Quick Setup (5 minutes)
-
-### Step 1: Get Your Accounts Ready
-
-1. **Netlify Account** (if you don't have one):
-   - Go to https://netlify.com
-   - Click "Sign up" → Use GitHub to sign in
-   - It's completely free!
-
-2. **imgbb API Key** (for image hosting):
-   - Go to https://api.imgbb.com/
-   - Click "Get API Key"
-   - Sign up (free) and copy your API key
-
-### Step 2: Deploy to Netlify
-
-#### Option A: Drag & Drop (Easiest)
-
-1. Download all files from this folder
-2. Go to https://app.netlify.com/drop
-3. Drag the entire folder onto the page
-4. Wait for deployment (30 seconds)
-5. Your site is live! 🎉
-
-#### Option B: GitHub Deploy (Recommended)
-
-1. Create a new GitHub repository
-2. Upload all these files to the repo
-3. Go to https://app.netlify.com
-4. Click "Add new site" → "Import an existing project"
-5. Choose "Deploy with GitHub"
-6. Select your repository
-7. Click "Deploy site"
-
-### Step 3: Configure Environment Variables
-
-This is where you add your SECRET information that users can't see:
-
-1. In Netlify dashboard, go to **Site settings**
-2. Click **Environment variables** in the left menu
-3. Click **Add a variable** and add these:
-
-| Variable Name | Value | Example |
-|--------------|-------|---------|
-| `DISCORD_WEBHOOKS` | Your Discord webhook URLs (comma-separated if multiple) | `https://discord.com/api/webhooks/123/abc,https://discord.com/api/webhooks/456/def` |
-| `IMGBB_API_KEY` | Your imgbb API key | `c865249e81ba759d28d1c83979113157` |
-| `EMBED_COLOR` | Discord embed color (optional) | `#596D69` |
-| `AVATAR_IMAGE` | Logo URL (optional) | `https://i.imgur.com/9aiqU0r.png` |
-| `FORM_LINK` | Your form URL (optional, add after deployment) | `https://your-site.netlify.app` |
-
-4. Click **Save**
-5. Go to **Deploys** tab and click **Trigger deploy** → **Deploy site**
-
-### Step 4: Test It!
-
-1. Go to your live site URL (shown in Netlify dashboard)
-2. Fill out the form
-3. Upload images
-4. Submit!
-5. Check your Discord server for the entry 🎊
-
----
-
-## 📁 File Structure
-
-```
-your-project/
-├── index.html              # Main form page
-├── script.js               # Frontend JavaScript
-├── netlify.toml            # Netlify configuration
-├── package.json            # Dependencies
-├── netlify/
-│   └── functions/
-│       ├── submit-entry.js      # Main serverless function
-│       └── parse-multipart.js   # Form parser utility
-└── README.md               # This file
-```
-
----
-
-## 🔧 Configuration Options
-
-### Multiple Discord Servers
-
-To send submissions to multiple Discord servers, separate webhook URLs with commas:
-
-```
-DISCORD_WEBHOOKS=https://discord.com/api/webhooks/111/aaa,https://discord.com/api/webhooks/222/bbb
-```
-
 ### Custom Embed Colors
 
 Change the Discord embed color by setting `EMBED_COLOR`:
@@ -159,7 +56,6 @@ After deployment, add your Netlify URL to `FORM_LINK` so the Discord embed inclu
 - imgbb: Free tier includes unlimited image hosting
 - Discord webhooks: Free forever
 
----
 
 ## 🆘 Need Help?
 
@@ -179,7 +75,6 @@ Common issues and solutions:
    - Verify all environment variables are set
    - Try triggering a new deploy
 
----
 
 ## 📝 Updating Your Form
 
@@ -193,8 +88,6 @@ To make changes:
 ---
 
 ## 🎨 Customization
-
-Want to customize colors, text, or layout?
 
 - Edit `index.html` for structure and styling
 - Edit `script.js` for form behavior
@@ -220,15 +113,3 @@ Want to customize colors, text, or layout?
 ## 📜 License
 
 MIT License - Feel free to use and modify!
-
----
-
-## 🎯 What's Next?
-
-After setup:
-1. Share your Netlify URL with participants
-2. Monitor submissions in Discord
-3. Customize the form to your needs
-4. Add more fields if needed
-
-**Your webhooks are now secure!** 🎉

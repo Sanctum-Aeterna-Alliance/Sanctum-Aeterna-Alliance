@@ -830,7 +830,7 @@
             const embed = {
                 title: CONFIG.embed.title,
                 color: parseInt(CONFIG.embed.colour.replace('#', ''), 16),
-                description: `${CONFIG.embed.shortDescription}\n\n${fieldsText}`,
+                description: `${CONFIG.embed.shortDescription}\n\n${fieldsText}\n\n📝 **[Click here to submit your entry!](${CONFIG.embed.formLink})**`,
                 timestamp: new Date().toISOString(),
                 footer: {
                     text: `Submission #${submissionNum}`
